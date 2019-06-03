@@ -34,31 +34,33 @@ const Container = styled.div`
   }
 `;
 
-const ContainerLeft = styled.div`
+const NestedContainer = styled.div`
   display: flex;
-  justify-content: none;
-  align-items: center;
   flex-direction: row;
+  align-items: center;
+
+  span {
+    cursor: pointer;
+  }
+`;
+
+const ContainerLeft = styled(NestedContainer)`
+  justify-content: none; 
   flex: 1;
   font-size: 11px;
 
   span {
-    cursor: pointer;
     margin-right: 25%;
     font-weight: bold;
   }
 `;
 
-const ContainerCenter = styled.div`
-  display: flex;
+const ContainerCenter = styled(NestedContainer)`
   justify-content: center;
-  align-items: center;
-  flex-direction: row;
   flex: 3;
   font-size: 9px;
 
   span {
-    cursor: pointer;
     margin-right: 5%;
   }
 
@@ -71,18 +73,12 @@ const ContainerCenter = styled.div`
   }
 `;
 
-const ContainerRight = styled.div`
+const ContainerRight = styled(NestedContainer)`
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  flex-direction: row;
   flex: 1;
   font-size: 11px;
   font-weight: bold;
-
-  span {
-    cursor: pointer;
-  }
 `;
 
 const TopBar = () => {
