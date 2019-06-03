@@ -1,4 +1,5 @@
 import React from "react";
+import PropType from "prop-types";
 import styled from "styled-components";
 
 // Refactor this component to use styled components and not classNames.
@@ -45,7 +46,7 @@ const NestedContainer = styled.div`
 `;
 
 const ContainerLeft = styled(NestedContainer)`
-  justify-content: none; 
+  justify-content: none;
   flex: 1;
   font-size: 11px;
 
@@ -81,7 +82,7 @@ const ContainerRight = styled(NestedContainer)`
   font-weight: bold;
 `;
 
-const TopBar = () => {
+const TopBar = props => {
   return (
     <StyledTopBar>
       <Container>
@@ -97,11 +98,20 @@ const TopBar = () => {
           <span>ANNOUNCEMENTS</span>
         </ContainerCenter>
         <ContainerRight className="container-right">
-          <span>LOG IN</span>
+          <span onClick={props.displayLogin}>
+            {props.username
+              ? `WELCOME ${props.username.toUpperCase()}`
+              : "LOG IN"}
+          </span>
         </ContainerRight>
       </Container>
     </StyledTopBar>
   );
+};
+
+TopBar.PropType = {
+  displayLogin: PropType.func,
+  username: PropType.string
 };
 
 export default TopBar;
